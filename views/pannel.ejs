@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        button {
+            background-color: #008CBA;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        button.edit {
+            background-color: #4CAF50;
+        }
+
+        button.delete {
+            background-color: #f44336;
+        }
+
+        #search-container {
+            margin-top: 10px;
+        }
+
+        #create-button {
+            background-color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+<div id="search-container">
+    <form action="/find" method="post">
+        <label for="search">Search:</label>
+        <input type="text" id="search" name="search" placeholder="Search by Username">
+        <button id="search-button">Search</button>
+    </form>
+    
+</div>
+<form method="get" action="/register" >
+    <button id="create-button" type="submit">Create</button>
+</form>
+
+<form action="/logout">
+    <button class="btn btn-outline-success ml-3 badge-pill" type="submit"> Sign Out</button>
+  </form>  
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Actions</th>
+    </tr>
+    <% userData.forEach(user => { %>
+    <tr>
+        <td><%= user._id %></td>
+        <td><%= user.name %></td>
+        <td><%= user.username %></td>
+        <td><%= user.password %></td>
+        <td>
+            <span>
+            <form action="/edit/<%= user._id %>" method="GET">
+                <button type="submit" class="edit">Edit</button>
+            </form>
+            <br>
+            <form action="/delete/<%= user._id %>" method="POST">
+                <button type="submit" class="delete">Delete</button>
+            </form>
+        </span>
+        </td>
+    </tr>
+    
+    <% }); %>
+    <!-- Add more rows for additional users -->
+</table>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+         
+        }
+
+        th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            background-color: green;
+        }
+
+       
+    </style>
+</head>
+<body>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Username</th>
+        <th>Password</th>
+    </tr>
+    <tr>
+        <td><%= userData._id %></td>
+        <td><%= userData.name %></td>
+        <td><%= userData.username %></td>
+        <td><%= userData.password %></td>
+    </tr>
+
+    <!-- Add more rows for additional users -->
+</table>
+</body>
+</html>
